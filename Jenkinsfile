@@ -7,32 +7,31 @@ pipeline{
     agent {label 'Ubuntu'}
       stages{
            stage('Checkout'){
-	    agent any
+	    //agent any
                steps{
 		 echo 'cloning..'
                  git 'https://github.com/SreejaKolli/Sample_maven_project.git'
               }
           }
           stage('Compile'){
-              agent any
+              //agent any
               steps{
                   echo 'compiling..'
                   sh 'mvn compile'
 	      }
           }
           stage('CodeReview'){
-              agent any
+              //agent any
               steps{
 		  echo 'codeReview'
                   sh 'mvn pmd:pmd'
               }
           }
            stage('UnitTest'){
-		   agent any
-              steps{
-	         
+	      //agent any
+              steps{	         
                   sh 'mvn test'
-              }
+               }
                post {
                success {
                    junit 'target/surefire-reports/*.xml'
@@ -40,7 +39,7 @@ pipeline{
            }	
           }
            stage('MetricCheck'){
-               agent any
+         //agent any
         //For Ubuntu with Java Version 11,code coverage will not execute cobertura plugin as it has
         //exception to execute only with java version 8
             steps{
@@ -55,7 +54,7 @@ pipeline{
                }		
           }
           stage('Package'){
-              agent any
+              //agent any
               steps{
                   sh 'mvn package'
               }
