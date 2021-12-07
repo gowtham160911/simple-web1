@@ -491,8 +491,6 @@
             </reporting>
         </profile>
     </profiles>
-
-</project>
 <distributionManagement>
     <repository>
         <id>releases</id>
@@ -503,3 +501,4 @@
         <url>http://domain:port/content/repositories/snapshots</url>
     </snapshotRepository>
 </distributionManagement>
+</project>
